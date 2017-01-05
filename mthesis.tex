@@ -1,0 +1,532 @@
+% 2015.07.10 Modified
+%
+% mthesis.tex
+%
+\documentclass[12pt]{jarticle} % Japanese
+%\documentclass[12pt]{article} % English
+% if there are problems in the above regarding fonts, use this
+% \documentclass[UTF8]{ctexart}
+
+\usepackage[utf8]{inputenc}
+%\usepackage{utf}
+\usepackage{naist-jmthesis} %Japanese
+%\usepackage{naist-mthesis} %English
+
+\usepackage{graphicx}
+
+%
+% Page style
+%
+\pagestyle{final}       % Camera-Ready
+%\pagestyle{draft}      % Draft
+%
+%
+\lang{Japanese} % Japanese
+%\lang{English} % English
+%
+% Student Number
+%
+\studentnumber{1551010}
+%
+% 修士論文 か 課題研究 かの選択
+%
+\doctitle{\mastersthesis}       % 修士論文
+%\doctitle{\mastersreport}      % 課題研究
+%
+% 取得予定の修士号は 修士(工学) か 修士(理学) か ？
+%
+\major{\engineering}    % 工学
+%\major{\science}       % 理学
+%
+% 日本語題目 (in LaTeX)
+%
+\title{ゲーミフィケーションを用いたソースコード上の技術的負債除去}
+%
+% 日本語題目 (in plain text)
+%
+%   注: (in LaTeX)と同じ場合は指定する必要なし。
+%       この情報は修士論文/課題研究には現れませんが、管理のために必要です。
+%
+\ptitle{ゲーミフィケーションを用いたソースコード上の技術的負債除去}
+%
+% 英語題目 (in LaTeX)
+%
+\etitle{英語タイトルが入る}
+%
+% 英語題目 (in plain text)
+%
+%   注: (in LaTeX)と同じ場合は指定する必要なし。
+%       この情報は修士論文/課題研究には現れませんが、管理のために必要です。
+%
+\eptitle{英語タイトルが入る}
+%
+% 日本語氏名 (in LaTeX)
+%   （姓と名の間に空白を入れて下さい）
+%
+\author{一ノ瀬 智浩}
+%
+% 日本語氏名 (in plain text)
+%
+%   注: (in LaTeX)と同じ場合は指定する必要なし。
+%       この情報は修士論文/課題研究には現れませんが、管理のために必要です。
+%
+\pauthor{一ノ瀬 智浩}
+%
+% 欧文氏名 (in LaTeX)
+%   （first name, last name の順に記入し、先頭文字のみを大文字にする。）
+%
+\eauthor{Tomohiro Ichinose}
+% 別の例: \eauthor{Kurt G\"{o}del}
+%
+%
+% 欧文氏名 (in plain text)
+%
+%   注: (in LaTeX)と同じ場合は指定する必要なし。
+%       この情報は修士論文/課題研究には現れませんが、管理のために必要です。
+%
+\epauthor{Tomohiro Ichinose}
+% 別の例: \peauthor{Kurt Goedel}
+%
+%
+% 論文提出年月日
+%
+\syear{2016}
+\smonth{2}
+\sday{2}
+%
+% 専攻の選択
+%
+%\department{\infproc}  % 情報処理学
+%\department{\infsys}    % 情報システム学
+%\department{\bioinf}   % 情報生命科学
+%\department{\infsci}    % 情報科学
+%
+%
+% 審査委員（日本語）
+%   （姓と名、名と称号の間に空白を入れて下さい）
+%
+%５人以上の場合，５人目以降は\addcmembers を使って宣言する。
+%最大で合わせて８人まで宣言可能。
+%主指導教員、副指導教員を明記する。両指導教員以外は委員。
+%学外審査委員は、大学名を明記する
+%
+% ４人の場合
+%\cmembers{○○ ○○ 教授}{（主指導教員）}
+%         {○○ ○○ 教授}{（副指導教員）}
+%         {○○ ○○ 准教授}{（副指導教員）}
+%         {○○ ○○ 准教授}{（△△大学）}
+%
+% ３人の場合
+\cmembers{松本 健一 教授}{（主指導教員）}
+         {安本 慶一 教授}{（副指導教員）}
+         {　畑 秀明 助教}{（副指導教員）}
+         {}{}
+
+% ２人の場合
+%\cmembers{○○ ○○ 教授}{（主指導教員）}
+%         {○○ ○○ 教授}{（副指導教員）}
+%          {}{}
+%          {}{}
+%
+% ５人目の宣言
+%\addcmembers{55 55 准教授}{（□□大学）}
+%            {}{}
+%            {}{}
+%            {}{}
+%
+% ５?６人目の宣言
+%\addcmembers{55 55 准教授}{（□□大学）}
+%            {66 66 准教授}{（□□大学）}
+%            {}{}
+%            {}{}
+%
+% ５?７人目の宣言
+%\addcmembers{55 55 准教授}{（□□大学）}
+%            {66 66 准教授}{（□□大学）}
+%            {77 77 准教授}{（□□大学）}
+%            {}{}
+%
+% ５?８人目の宣言
+%\addcmembers{55 55 准教授}{（□□大学）}
+%            {66 66 准教授}{（□□大学）}
+%            {77 77 准教授}{（□□大学）}
+%            {88 88 准教授}{（□□大学）}
+%
+%
+% 審査委員（英語）
+%     （first name, last name の順に記入し、先頭文字のみを大文字にする。
+%       first name と last name の間に空白、
+%       last name と 称号の間にカンマと空白を入れて下さい。）
+%
+% ５人以上の場合，５人目以降は\eaddcmembers を使って宣言する
+% Supervisor, Co-supervisor, and Member must be specified.
+% ４人の場合
+%$\ecmembers{Professor XXX XXX}{(Supervisor)}
+%          {Professor XXX XXX}{(Co-supervisor)}
+%          {Associate Professor XXX XXX}{(Co-supervisor)}
+%          {Associate Professor XXX XXX}{(YY University)}
+%
+% ３人の場合
+\ecmembers{Professor Kenichi Matsumoto, }{(Supervisor)}
+          {Professor Keiichi Yasumoto, }{(Co-supervisor)}
+          {Assistant Professor Hideaki Hata, }{(Co-supervisor)}
+          {}{}
+
+% ２人の場合
+% \ecmembers{Professor XXX XXX}{(Supervisor)}
+%           {Professor XXX XXX}{(Co-supervisor)}
+%           {}{}
+%           {}{}
+%
+% ５人目の宣言
+%\eaddcmembers{Professor 55 55}{(YY University)}
+%            {}{}
+%            {}{}
+%            {}{}
+%
+% ５?６人目の宣言
+%\eaddcmembers{Professor 55 55}{(YY University)}
+%             {Professor 66 66}{(YY University)}
+%             {}{}
+%             {}{}
+%
+% ５?７人目の宣言
+%\eaddcmembers{Professor 55 55}{(YY University)}
+%             {Professor 66 66}{(YY University)}
+%             {Professor 77 77}{(YY University)}
+%             {}{}
+%
+% ５?８人目の宣言
+%\eaddcmembers{Professor 55 55}{(YY University)}
+%             {Professor 66 66}{(YY University)}
+%             {Professor 77 77}{(YY University)}
+%             {Professor 88 88}{(YY University)}
+%
+%
+%
+% キーワード５?６個 (in LaTeX)
+%
+\keywords{$\pi$, 天文学, 数学, 計算機, アルゴリズム}
+%
+% キーワード５?６個 (in plain text)
+%
+%   注: (in LaTeX)と同じ場合は記入する必要なし。
+%       この情報は修士論文/課題研究には現れませんが、管理のために必要です。
+%
+\pkeywords{pi, 天文学, 数学, 計算機, アルゴリズム}
+%
+% 5 or 6 Keywords (in LaTeX)
+%
+\ekeywords{$\pi$, astronomy, mathematics, computer, algorithm}
+%
+% 5 or 6 Keywords (in plain text)
+%
+%   注: (in LaTeX)と同じ場合は記入する必要なし。
+%       この情報は修士論文/課題研究には現れませんが、管理のために必要です。
+%
+\epkeywords{pi, astronomy, mathematics, computer, algorithm}
+%
+% 内容梗概 (in LaTeX)
+%
+%   注: 行の先頭が\\で始まらないようにすること。
+%
+\abstract{
+人類がこの地上に現われて以来、$\pi$の計算には多くの関心が払われてきた。
+
+本論文では、太陽と月を利用して$\pi$を低速に計算するための
+画期的なアルゴリズムを与える。
+
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+}
+%
+% 内容梗概 (in plain text)
+%
+%   注: (in LaTeX)と同じ場合は記入する必要なし。
+%       この情報は修士論文/課題研究には現れませんが、管理のために必要です。
+%       改行する箇所には空白行を入れる。
+%       行の先頭が\\で始まらないようにすること。
+%
+\pabstract{
+人類がこの地上に現われて以来、piの計算には多くの関心が払われてきた。
+
+本論文では、太陽と月を利用してpiを低速に計算するための
+画期的なアルゴリズムを与える。
+
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+ここには内容梗概を書く。ここには内容梗概を書く。ここには内容梗概を書く。
+}
+%
+% Abstract (in LaTeX)
+%
+%  注: 　行の先頭が\\で始まらないようにすること。
+%
+\eabstract{
+The calculation of $\pi$ has been paid much attention since human beings
+appeared on the earth.
+
+This thesis presents novel low-speed algorithms to calculate
+$\pi$ utilizing the sun and the moon.
+
+This is a sample abstract. This is a sample abstract. 
+This is a sample abstract. This is a sample abstract. 
+This is a sample abstract. This is a sample abstract. 
+This is a sample abstract. This is a sample abstract. 
+This is a sample abstract. This is a sample abstract. 
+
+This is a sample abstract. This is a sample abstract. 
+This is a sample abstract. This is a sample abstract. 
+This is a sample abstract. This is a sample abstract. 
+This is a sample abstract. This is a sample abstract. 
+This is a sample abstract. This is a sample abstract. 
+}
+%
+% Abstract (in plain text)
+%
+%   注: (in LaTeX)と同じ場合は記入する必要なし。
+%       この情報は修士論文/課題研究には現れませんが、管理のために必要です。
+%       改行する箇所には空白行を入れる。
+%       行の先頭が\\で始まらないようにすること。
+%
+\epabstract{
+The calculation of pi has been paid much attention since human beings
+appeared on the earth.
+
+This thesis presents novel low-speed algorithms to calculate
+pi utilizing the sun and the moon.
+
+This is a sample abstract. This is a sample abstract. 
+This is a sample abstract. This is a sample abstract. 
+This is a sample abstract. This is a sample abstract. 
+This is a sample abstract. This is a sample abstract. 
+This is a sample abstract. This is a sample abstract. 
+
+This is a sample abstract. This is a sample abstract. 
+This is a sample abstract. This is a sample abstract. 
+This is a sample abstract. This is a sample abstract. 
+This is a sample abstract. This is a sample abstract. 
+This is a sample abstract. This is a sample abstract. 
+}
+%%%%%%%%%%%%%%%%%%%%%%%%% document starts here %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%
+% 表紙 および アブストラクト
+%
+\titlepage
+\cmemberspage
+\firstabstract
+\secondabstract
+%
+% 目次
+%
+\toc
+\newpage
+\listoffigures
+%\newpage
+\listoftables
+%
+% これ以降本文
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{はじめに}
+\pagenumbering{arabic}
+
+技術的負債とは，ソフトウェア開発における場当たり的な対応やその結果を指す比喩である．
+技術的負債は，短期的には開発スピードを速める利点がある一方，長期的に見るとソースコードの保守性を低下させ，開発スピードを遅くするという問題がある[1]．
+開発者が意識的にソースコード上に残す技術的負債はself-admitted tech-nical debt（以降，SATD）と呼ばれる．
+SATD はTODO，FIXMEといったキーワードを含むコメントでその存在が確認できる．
+Wehaibi らのSATD とソフトウェアの品質に関する研究では，SATDが含まれているファイルに対する変更（SATD change）と含まれていないファイルに対する変更（non-SATD change）の2 種類を比較している．
+複雑度の比較では，non-SATD change よりもSATDchange の方が変更された行数やファイル構造数が多く複雑であるという結果が得られており，SATD はソフトウェアの保守性を低下させているといえる[2]．
+ソフトウェアの保守性を向上させるには，ソースコード上に残り続けているSATD を除去することが必要だと考えられる．
+しかし，ソフトウェアの開発期間中は継続的にSATD がソースコード上に混入し，26.25\%から63.45\%は取り除かれるが，全体としてSATD はソフトウェアに残り続ける傾向があると報告されている[3]．
+ソースコード上に存在するSATD は，複雑すぎる関数や応急処置的な実装といった，ソフトウェアの動作そのものには影響しないものが大半を占めている[4]．
+よって，多くのSATD は除去の優先度が低いためにソースコード上に残り続けていると考えられる．
+そのため，開発者に優先度の低いSATD を除去を促す仕組みがあれば，ソフトウェアの保守性の向上に繋がると考えられる．
+SATD を除去するためにはSATD が存在するソースファイルを知る必要がある．
+しかし，SATD ソースコード上のコメントを見なければ存在が分からないため，どのファイルにSATD が存在するかを把握しづらいという問題がある．
+効率良くSATD を除去するには，SATD の存在するファイルが分かりやすく可視化されることが望ましい．
+本研究では，ソースコード上に残っているSATD の除去を支援するための，ゲーミフィケーション，およびソースコード可視化を利用したシステムを提案する．
+提案システムでは，ランキング提示による競争を促すゲーミフィケーションを用いることで，積極的なSATD の除去を開発者に促し，ソフトウェアの保守性の維持向上を目指す．
+また，提案システムはソースコードのファイル構造を街のように可視化し，SATD が存在するファイルを目立たせることで，除去するべきSATD を分かりやすくユーザに提示する．
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{関連研究}
+Potdar らはソフトウェアに存在するSATD の個数を明らかにするため，SATD を示す62 個のコメントパターンを定義し，4つのOSS プロジェクトに存在するSATD の個数を調査している．
+その調査では，SATD がソースファイル上に2.4\%から31.0\%含まれているという結果が得られている[3]．
+da S. Maldonado らはSATD の種類ごとの個数を明らかにするため，SATD を関連する5 種類の問題点（設計・欠陥・文書化・要求物・テスト）ごとに分類している．
+5つのOSS プロジェクトのソースコードの調査では，最も割合が高いのは設計に関するSATD であり，42\%から84\%を占めているという結果が得られている[4]．
+設計に関するSATD は複雑すぎる関数や応急処置的な実装といったものであり，ソフトウェアの動作に影響する欠陥や要求物に関するSATD に比べると除去の優先度が低いと考えられる．
+SATD の除去に対し，何らかのインセンティブを設定することにより，開発者に優先度の低いSATD を除去させられる可能性がある．
+本研究ではゲーミフィケーションを利用することにより，ソースコード上に残っている，除去優先度の低いSATD の除去を促すシステムを提案する．
+
+
+ソフトウェアの可視化は，プログラム読解支援や問題検出の結果提示など，様々な目的に対して数多く研究されている[5][6]．
+Wettel らの提案するCodeCity は，ソースコードのクラスとパッケージの構造を街のように3D で可視化するシステムである．
+街の構造は直感的で親しみやすく，ソフトウェアの複雑な構造を単純化しすぎることなく表現するのに適している[7]．
+Balogh らはコンピュータゲームであるMineCraftを用いてソースコードを街のように可視化するCodeMetropolis を利用し，ソフトウェアテストに関連するメトリクスを可視化するシステムを提案している[8]．
+Balogh らのシステムでは関連のあるテストケースとソースコードを並べて配置して可視化することで，開発者の理解を支援している．
+本研究では街の構造を利用した可視化を用い，SATDのあるソースコードに目印を付けることによって，開発者による，SATD があるソースコードの特定作業を支援する．
+
+
+近年では，シリアスゲームやGames with a purpose といったゲームを問題解決に利用する手法への関心が高まっている[9][10]．
+その中でもゲーミフィケーションはゲームそのものではなく，ゲームの要素を社会活動や，活動を支援するシステムに取り入れる事で意欲を維持向上させる手法である[11]．
+ゲーミフィケーションによって作業を支援するシステムはこれまでに複数提案されている[12][13][14]．
+また，ソフトウェア開発への適用も注目されている[15][16]．既存研究で提案されたシステムでは，ゲームの要素として競争がよく用いられている．
+競争はカイヨワの提案する楽しさを生む4 つの要因[17] や，Steven が定義した人を動機づける16 個の欲求[18] などにおいても見られるため，ゲーミフィケーションに用いる要素として適しているといえる．
+本研究では，システム内でSATD の除去数をランキング形式で提示し，開発者同士で競わせて動機づけることでSATD の積極的な除去を支援する．
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{提案システム}
+提案システムはGitで管理されているリポジトリを対象とする．
+Python プログラムでリポジトリを解析し，街の情報を生成する．
+各開発者のSATD の除去数情報はプロジェクト管理者用ツール上で編集し，街の情報に付与する．
+街はゲームエンジンの一つであるUnity上で可視化する．
+
+\subsection{システム構成}
+サーバ側含めたシステム全体の構成説明．
+
+\subsection{リポジトリ解析}
+リポジトリ解析はPython ライブラリの一つであるGitPythonを利用した，約180 行のPython プログラムで実施する．
+解析プログラムはGit リポジトリに存在するソースファイルを探索し，街の情報としてソースファイル名や存在するディレクトリ名，コード行数，コメント行数，SATD が存在する行番号を取得する．
+対応しているプログラミング言語はJava，Ruby，Python の3種類である．STAD はPotdarらの定義する62個のキーワードから判断する[3]．
+解析結果はJson ファイルとして出力される．
+
+\subsection{Webシステム}
+Webシステムの説明．
+
+\subsubsection{Rocat}
+（ACITの論文引いて）Rocatを説明．
+
+\subsubsection{ソースコードとSATDの情報提示}
+元のRocatからの改良点他，HEIZOでの可視化部分の説明．
+
+\subsubsection{ランキング}
+ランキング部分の説明．
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{実験}
+本章では，提案システムの評価実験について述べる．
+（以下，実験概要の説明．何のためにどんな実験をするのか）
+
+\subsection{実験対象}
+実験対象のプロジェクト（リポジトリ）についての説明．
+
+\subsection{実験方法}
+システムにリンクするバッジを作ってReadMeに～あたりの説明とバッジを貼ってからの流れを説明．
+
+\subsection{評価}
+定量的評価と定性的評価の2種類をする．
+
+\subsubsection{SATD除去数の評価}
+定量的評価の説明．
+
+\subsubsection{使いやすさの評価}
+定性的評価の説明．
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{結果と考察}
+本章では，提案システムの評価実験の結果，およびその考察を述べる．
+
+\subsection{SATD除去数}
+定量的評価の結果と考察．
+
+\subsection{使いやすさ}
+定性的評価の結果と考察．
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{妥当性の脅威}
+妥当性の脅威の説明．\cite{caffe}
+%上の引用はbblファイルのエラー防止用．他の引用を1件以上作った後削除する
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{終わりに}
+本研究では，ソースコードの可視化およびゲーミフィケーションにより，SATD の除去を支援するシステムを提案した．
+提案システムを開発現場に適用することにより，開発者のSATD の除去作業に対する意欲が向上してより多くのSATD が除去されることが期待でき，ソフトウェアの保守性の向上につながると考えられる．
+ゲーミフィケーションは金銭的なインセンティブを利用することなく作業者を動機づけることができる手法である．
+そのため，提案システムはボランティアで開発が行われるOSS プロジェクトに特に適していると考えられる．
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% 謝辞
+%
+\acknowledgements
+
+Thank you. Thank you.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% 参考文献
+% ここでは \reference を使って、自分でリストを作るか、BibTeX を使って
+% リストをつくって下さい。この例では BibTeX を作るような形式になってい
+% ます。
+%
+\newpage
+% \reference
+\bibliographystyle{plain}
+\bibliography{mthesis}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% 付録
+%
+\appendix
+
+\section{おまけその１}
+\label{omake1}
+
+これはおまけです。これはおまけです。これはおまけです。これはおまけです。
+これはおまけです。これはおまけです。これはおまけです。これはおまけです。
+これはおまけです。これはおまけです。これはおまけです。これはおまけです。
+これはおまけです。これはおまけです。これはおまけです。これはおまけです。
+
+\begin{figure}
+\centerline{これはおまけの図です。}
+\caption{おまけの図}
+\end{figure}
+
+
+\section{おまけその２}
+
+これもおまけです。これもおまけです。これもおまけです。これもおまけです。
+これもおまけです。これもおまけです。これもおまけです。これもおまけです。
+これもおまけです。これもおまけです。これもおまけです。これもおまけです。
+これもおまけです。これもおまけです。これもおまけです。これもおまけです。
+
+\end{document}
+
